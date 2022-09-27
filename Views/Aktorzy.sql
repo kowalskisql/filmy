@@ -1,6 +1,6 @@
 CREATE VIEW Aktorzy
 AS
-SELECT Aktor.*, Osoba.Imie, Osoba.Nazwisko
-FROM Osoba
-JOIN Aktor ON Osoba.OsobaID = Aktor.OsobaID
+SELECT a.*, o.Imie, o.Nazwisko
+FROM Osoba AS o
+JOIN Aktor AS a ON o.OsobaID = a.OsobaID
 GO
