@@ -36,8 +36,21 @@ BEGIN
 	  RETURN -1;
 	END
 
-	INSERT INTO Film (Tytul, KrajID, CzasTrwania, Opis, GatunekID, Premiera, RezyseriaID)
-	VALUES (@Tytul, @KrajID, @CzasTrwania, @Opis, @GatunekID, @Premiera, @RezyseriaID)
+
+	BEGIN TRY
+	BEGIN TRAN
+
+		INSERT INTO Film (Tytul, KrajID, CzasTrwania, Opis, GatunekID, Premiera, RezyseriaID)
+		VALUES (@Tytul, @KrajID, @CzasTrwania, @Opis, @GatunekID, @Premiera, @RezyseriaID)
+
+	COMMIT
+	END TRY
+	BEGIN CATCH
+
+		ROLLBACK;
+		THROW;
+
+	END CATCH
 
 	SELECT SCOPE_IDENTITY() AS FilmID
 
