@@ -1,7 +1,7 @@
 CREATE VIEW Gatunki
 AS
-SELECT Gatunek, LiczbaFilmow AS FilmyCnt
+SELECT TOP 10 Gatunek, LiczbaFilmow AS FilmyCnt
 FROM dbo.Gatunek
-
+ORDER BY FilmyCnt
 
 GO
